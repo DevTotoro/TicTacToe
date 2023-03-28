@@ -4,3 +4,9 @@
 *.sln
 *.vcxproj
 *.vcxproj.*
+
+### Build ###
+build/
+
+### Windows ###
+*.bat
