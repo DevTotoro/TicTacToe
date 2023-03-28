@@ -1,3 +1,5 @@
+SDL2 = "C:/dev/resources/SDL2"
+
 workspace "TicTacToe"
 	architecture "x86"
 	configurations {
@@ -19,7 +21,17 @@ project "TicTacToe"
 	}
 
 	includedirs {
-		"src"
+		"src",
+		"%{SDL2}/include"
+	}
+
+	libdirs {
+		"%{SDL2}/lib/x86"
+	}
+
+	links {
+		"SDL2.lib",
+		"SDL2main.lib"
 	}
 
 	filter "system:windows"
