@@ -58,6 +58,30 @@ namespace TicTacToe
 		{
 			switch (event.type)
 			{
+			case SDL_MOUSEMOTION:
+			{
+				if (!m_GameOver)
+				{
+					int x, y;
+					SDL_GetMouseState(&x, &y);
+					m_Grid->UpdateHover(x, y);
+				}
+				break;
+			}
+			case SDL_MOUSEBUTTONDOWN:
+			{
+				if (!m_GameOver)
+				{
+					int x, y;
+					SDL_GetMouseState(&x, &y);
+					m_Grid->UpdateClick(x, y, m_XTurn);
+				}
+				else
+				{
+					Reset();
+				}
+				break;
+			}
 			case SDL_QUIT:
 				m_Running = false;
 				break;
@@ -67,6 +91,16 @@ namespace TicTacToe
 
 	void Application::Update()
 	{
+		if (m_Grid->CheckWin())
+		{
+			m_GameOver = true;
+			m_BackgroundColor = { 112, 250, 107, 255 };
+		}
+		else if (m_Grid->CheckDraw())
+		{
+			m_GameOver = true;
+			m_BackgroundColor = { 250, 117, 107, 255 };
+		}
 	}
 
 	void Application::Render()
@@ -77,5 +111,14 @@ namespace TicTacToe
 		m_Grid->Draw();
 
 		SDL_RenderPresent(m_Renderer);
+	}
+
+	void Application::Reset()
+	{
+		m_Grid->Reset();
+		m_GameOver = false;
+		m_XTurn = true;
+
+		m_BackgroundColor = { 30, 30, 30, 255 };
 	}
 }

@@ -14,6 +14,14 @@ namespace TicTacToe
 
 		void Draw();
 
+		void Reset();
+
+		bool CheckWin();
+		bool CheckDraw();
+
+		void UpdateHover(int mouseX, int mouseY);
+		void UpdateClick(int mouseX, int mouseY, bool& xTurn);
+
 	private:
 		Cell m_Cells[GRID_SIZE][GRID_SIZE];
 	};

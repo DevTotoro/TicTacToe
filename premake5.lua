@@ -11,7 +11,7 @@ workspace "TicTacToe"
 	objdir "build/obj/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 project "TicTacToe"
-	kind "ConsoleApp"
+	kind "WindowedApp"
 	language "C++"
 	cppdialect "C++20"
 

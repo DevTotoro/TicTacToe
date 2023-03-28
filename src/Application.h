@@ -18,6 +18,8 @@ namespace TicTacToe
 
 	private:
 		bool m_Running = true;
+		bool m_XTurn = true;
+		bool m_GameOver = false;
 
 		SDL_Window* m_Window = nullptr;
 		SDL_Renderer* m_Renderer = nullptr;
@@ -29,5 +31,7 @@ namespace TicTacToe
 		void PollEvents();
 		void Update();
 		void Render();
+
+		void Reset();
 	};
 }
